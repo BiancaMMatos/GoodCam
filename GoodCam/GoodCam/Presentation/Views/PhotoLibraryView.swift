@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PhotoLibraryView.swift
 //  GoodCam
 //
 //  Created by Bianca Maciel on 30/11/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PhotoLibraryView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    PhotoLibraryView()
 }

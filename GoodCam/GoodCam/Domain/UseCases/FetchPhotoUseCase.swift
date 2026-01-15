@@ -17,7 +17,7 @@ final class FetchPhotoUseCase: FetchPhotosUseCaseProtocol {
     }
     
     func execute() async -> [PhotoAsset] {
-        return PhotoAsset.mockedPhotos
+        return await repository.getPhotos()
     }
     
 }

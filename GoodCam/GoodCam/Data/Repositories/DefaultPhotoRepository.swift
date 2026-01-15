@@ -17,7 +17,12 @@ final class DefaultPhotoRepository: PhotoLibraryRepositoryProtocol {
     }
     
     func getPhotos() async -> [PhotoAsset] {
-        return PhotoAsset.mockedPhotos
+        do {
+            return try await service.fetchPhotos()
+        } catch {
+            print("Failed to fetch photos")
+            return PhotoAsset.mockedPhotos
+        }
     }
     
 }

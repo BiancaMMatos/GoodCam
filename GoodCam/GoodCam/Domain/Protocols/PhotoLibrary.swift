@@ -9,7 +9,7 @@
 // MARK: - UseCase
 /// Define an user action or business logic
 protocol FetchPhotosUseCaseProtocol {
-    func execute() async -> [PhotoAsset]
+    func execute() async throws -> [PhotoAsset]
 }
 
 

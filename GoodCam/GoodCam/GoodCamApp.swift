@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct GoodCamApp: App {
+
+    private let container = AppContainer()
+
     var body: some Scene {
         WindowGroup {
-            PhotoLibraryView()
+            PhotoLibraryView(
+                viewModel: PhotoLibraryViewModel(
+                    fetchPhotosUseCase: container.fetchPhotoUseCase
+                )
+            )
         }
     }
 }
+

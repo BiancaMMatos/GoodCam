@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/// Using real photos
 final class PhotoLibraryService: PhotoLibraryServiceProtocol {
     func fetchPhotos() async throws -> [PhotoAsset] {
         return PhotoAsset.mockedPhotos

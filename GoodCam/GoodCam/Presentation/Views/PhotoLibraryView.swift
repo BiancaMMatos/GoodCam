@@ -16,19 +16,7 @@ struct PhotoLibraryView: View {
                 .ignoresSafeArea()
 
             ScrollView {
-                LazyVGrid(
-                    columns: [GridItem(.adaptive(minimum: 100), spacing: 8)],
-                    spacing: 8
-                ) {
-                    ForEach(viewModel.photos) { photo in
-                        Image(uiImage: photo.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 100)
-                            .clipped()
-                    }
-                }
-                .padding()
+                PhotoLibraryGrid(photos: viewModel.photos)
             }
         }
         .task {
@@ -36,4 +24,3 @@ struct PhotoLibraryView: View {
         }
     }
 }
-

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PhotoAsset: Identifiable {
+struct PhotoAsset: Identifiable, Hashable {
     let id: String
     let image: UIImage
     

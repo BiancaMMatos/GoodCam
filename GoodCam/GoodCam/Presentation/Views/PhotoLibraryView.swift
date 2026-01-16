@@ -9,14 +9,27 @@ import SwiftUI
 
 struct PhotoLibraryView: View {
     @StateObject var viewModel: PhotoLibraryViewModel
+    @State private var path = NavigationPath()
 
     var body: some View {
-        ZStack {
-            Color(.blue)
-                .ignoresSafeArea()
+        NavigationStack(path: $path) {
+            ZStack {
+                Color(.blue)
+                    .ignoresSafeArea()
 
-            ScrollView {
-                PhotoLibraryGrid(photos: viewModel.photos)
+                ScrollView {
+                    PhotoLibraryGrid(photos: viewModel.photos, onSelect: { photo in
+                        path.append(PhotoRouter.photoDetail(photo))
+                    })
+                    .padding(10)
+                }
+            }
+            .navigationTitle("Library")
+            .navigationDestination(for: PhotoRouter.self) { route in
+                switch route {
+                case .photoDetail(let photo):
+                    PhotoDetailView(photo: photo)
+                }
             }
         }
         .task {

@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct PhotoLibraryView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @StateObject var viewModel: PhotoLibraryViewModel
 
-#Preview {
-    PhotoLibraryView()
+    var body: some View {
+        ZStack {
+            Color(.blue)
+                .ignoresSafeArea()
+
+            ScrollView {
+                PhotoLibraryGrid(photos: viewModel.photos)
+            }
+        }
+        .task {
+            await viewModel.load()
+        }
+    }
 }

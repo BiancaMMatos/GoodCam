@@ -10,6 +10,7 @@ import SwiftUI
 struct PhotoLibraryGrid: View {
     
     let photos: [PhotoAsset]
+    let onSelect: (PhotoAsset) -> Void
     
     private let columns = [
         GridItem(.adaptive(minimum: 300, maximum: 300), spacing: 8.0)
@@ -26,12 +27,11 @@ struct PhotoLibraryGrid: View {
                     .scaledToFit()
                     .frame(height: 100)
                     .clipped()
+                    .onTapGesture {
+                        onSelect(photo)
+                    }
             }
         }
         .padding()
     }
-}
-
-#Preview {
-    PhotoLibraryGrid(photos: PhotoAsset.mockedPhotos)
 }

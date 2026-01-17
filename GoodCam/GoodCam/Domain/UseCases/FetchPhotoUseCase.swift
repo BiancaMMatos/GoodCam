@@ -9,15 +9,17 @@ import Foundation
 
 
 final class FetchPhotoUseCase: FetchPhotosUseCaseProtocol {
-    
+
     private let repository: PhotoLibraryRepositoryProtocol
-    
+
     init(repository: PhotoLibraryRepositoryProtocol) {
         self.repository = repository
     }
-    
-    func execute() async -> [PhotoAsset] {
-        return await repository.getPhotos()
+
+    func execute() async throws -> [PhotoAsset] {
+        try await repository.getPhotos(
+            quality: .thumbnail
+        )
     }
-    
 }
+

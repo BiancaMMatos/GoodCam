@@ -5,23 +5,28 @@
 //  Created by Bianca Maciel on 13/01/26.
 //
 
+import UIKit
+import Photos
 
-// MARK: - UseCase
-/// Define an user action or business logic
+// MARK: - UseCases
+/// Represents a user action / business rule
 protocol FetchPhotosUseCaseProtocol {
     func execute() async throws -> [PhotoAsset]
 }
 
+protocol FetchSinglePhotoUseCaseProtocol {
+    func execute(id: String) async throws -> PhotoAsset
+}
 
 // MARK: - Repository
-/// Define how the domain get the photos doesn't matter from which source
+/// Defines how the domain accesses photos (source-agnostic)
 protocol PhotoLibraryRepositoryProtocol {
-    func getPhotos() async -> [PhotoAsset]
+    func getPhotos(quality: PhotoImageQuality) async throws -> [PhotoAsset]
 }
-
 
 // MARK: - Service
-/// Define how the system get the photos from an external source
+/// Defines how photos are fetched from an external system
 protocol PhotoLibraryServiceProtocol {
-    func fetchPhotos() async throws -> [PhotoAsset]
+    func fetchPhotos(quality: PhotoImageQuality) async throws -> [PhotoAsset]
 }
+

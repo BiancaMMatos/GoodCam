@@ -9,9 +9,8 @@ import Foundation
 
 /// Using mocked data
 final class MockPhotoLibraryService: PhotoLibraryServiceProtocol {
-    func fetchPhotos() async throws -> [PhotoAsset] {
+    func fetchPhotos(quality: PhotoImageQuality) async throws -> [PhotoAsset] {
         return PhotoAsset.mockedPhotos
     }
-    
     
 }

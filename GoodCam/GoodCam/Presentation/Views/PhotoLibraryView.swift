@@ -18,7 +18,7 @@ struct PhotoLibraryView: View {
                     .ignoresSafeArea()
 
                 ScrollView {
-                    PhotoLibraryGrid(photos: viewModel.photos, onSelect: { photo in
+                    PhotoLibraryVGrid(photos: viewModel.photos, onSelect: { photo in
                         path.append(PhotoRouter.photoDetail(photo))
                     })
                     .padding(10)
@@ -28,12 +28,14 @@ struct PhotoLibraryView: View {
             .navigationDestination(for: PhotoRouter.self) { route in
                 switch route {
                 case .photoDetail(let photo):
-                    PhotoDetailView(photo: photo)
+                    PhotoDetailView(photo: photo, libraryVM: viewModel)
                 }
             }
         }
         .task {
-            await viewModel.load()
+            if viewModel.photos.isEmpty {
+                await viewModel.load()
+            }
         }
     }
 }

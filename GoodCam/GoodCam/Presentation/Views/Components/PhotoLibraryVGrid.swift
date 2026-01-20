@@ -1,5 +1,5 @@
 //
-//  PhotoLibraryGrid.swift
+//  PhotoLibraryVGrid.swift
 //  GoodCam
 //
 //  Created by Bianca Maciel on 15/01/26.
@@ -7,20 +7,17 @@
 
 import SwiftUI
 
-struct PhotoLibraryGrid: View {
+struct PhotoLibraryVGrid: View {
     
     let photos: [PhotoAsset]
     let onSelect: (PhotoAsset) -> Void
     
     private let columns = [
-        GridItem(.adaptive(minimum: 300, maximum: 300), spacing: 8.0)
+        GridItem(.adaptive(minimum: 100), spacing: 8)
     ]
     
     var body: some View {
-        LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 100), spacing: 8)],
-            spacing: 8
-        ) {
+        LazyVGrid(columns: columns, spacing: 8) {
             ForEach(photos) { photo in
                 Image(uiImage: photo.image)
                     .resizable()

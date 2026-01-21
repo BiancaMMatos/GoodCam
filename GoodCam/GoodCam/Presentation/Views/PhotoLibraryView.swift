@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PhotoLibraryView: View {
-    @StateObject var viewModel: PhotoLibraryViewModel
+    let filtersService: FiltersService
     @State private var path = NavigationPath()
+    @StateObject var viewModel: PhotoLibraryViewModel
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -28,7 +29,7 @@ struct PhotoLibraryView: View {
             .navigationDestination(for: PhotoRouter.self) { route in
                 switch route {
                 case .photoDetail(let photo):
-                    PhotoDetailView(photo: photo, libraryVM: viewModel)
+                    PhotoDetailView(photo: photo, filtersService: filtersService, libraryVM: viewModel)
                 }
             }
         }

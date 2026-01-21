@@ -15,7 +15,7 @@ struct PhotoLibraryView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                Color(.blue)
+                Color(.library)
                     .ignoresSafeArea()
                 
                 ScrollView {

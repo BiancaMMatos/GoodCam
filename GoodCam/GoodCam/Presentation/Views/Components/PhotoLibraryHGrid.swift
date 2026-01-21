@@ -19,7 +19,7 @@ struct PhotoLibraryHGrid: View {
     var body: some View {
         ZStack {
             
-            Color(.red)
+            Color(.carrousel)
                 .ignoresSafeArea()
             
             ScrollView(.horizontal, showsIndicators: false) {

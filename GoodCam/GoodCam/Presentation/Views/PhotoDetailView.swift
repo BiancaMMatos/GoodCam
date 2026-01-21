@@ -69,6 +69,22 @@ struct PhotoDetailView: View {
                 )
                 .frame(height: 120)
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.savePhoto()
+                    } label: {
+                        Text("Save")
+                    }
+                }
+            }
+            .alert("Photo saved successfully!", isPresented: $viewModel.showSaveSuccess) {
+                Button("OK", role: .cancel) {}
+            }
+
+            .alert("Failed to save photo.", isPresented: $viewModel.showSaveError) {
+                Button("OK", role: .cancel) {}
+            }
             .navigationTitle("Photo")
             .navigationBarTitleDisplayMode(.inline)
         }

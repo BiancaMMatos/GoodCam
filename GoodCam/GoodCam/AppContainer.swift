@@ -6,10 +6,14 @@
 //
 
 
+import CoreImage
+import UIKit
+
 final class AppContainer {
 
     // MARK: - Services
     let photoLibraryService: PhotoLibraryServiceProtocol
+    let filtersService: FiltersService
 
     // MARK: - Repositories
     let photoLibraryRepository: PhotoLibraryRepositoryProtocol
@@ -18,13 +22,19 @@ final class AppContainer {
     let fetchPhotoUseCase: FetchPhotosUseCaseProtocol
 
     init() {
-        // Mocks
+        
+        // Service
         self.photoLibraryService = PhotoLibraryService()
+        self.filtersService = FiltersService(
+            context: CIContext()
+        )
 
+        // Repository
         self.photoLibraryRepository = DefaultPhotoRepository(
             service: photoLibraryService
         )
 
+        // UseCase
         self.fetchPhotoUseCase = FetchPhotoUseCase(
             repository: photoLibraryRepository
         )

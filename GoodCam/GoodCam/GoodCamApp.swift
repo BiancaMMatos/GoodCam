@@ -15,7 +15,7 @@ struct GoodCamApp: App {
     var body: some Scene {
         WindowGroup {
             PhotoLibraryView(
-                viewModel: PhotoLibraryViewModel(
+                filtersService: container.filtersService, viewModel: PhotoLibraryViewModel(
                     fetchPhotosUseCase: container.fetchPhotoUseCase
                 )
             )

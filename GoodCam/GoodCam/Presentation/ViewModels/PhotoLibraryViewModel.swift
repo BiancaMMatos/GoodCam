@@ -9,6 +9,7 @@ import Combine
 
 
 final class PhotoLibraryViewModel: ObservableObject {
+    @Published var isLoading = false
     @Published var photos: [PhotoAsset] = []
     private var fetchPhotosUseCase: FetchPhotosUseCaseProtocol
     
@@ -17,6 +18,10 @@ final class PhotoLibraryViewModel: ObservableObject {
     }
     
     func load() async {
+        
+        isLoading = true
+        defer { isLoading = false }
+        
         do {
             photos = try await fetchPhotosUseCase.execute()
         } catch {

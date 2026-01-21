@@ -24,7 +24,7 @@ struct PhotoDetailView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemGreen).ignoresSafeArea()
+            Color(.library).ignoresSafeArea()
             
             VStack {
                 Image(uiImage: viewModel.displayedImage)
@@ -42,7 +42,7 @@ struct PhotoDetailView: View {
                                     .font(.caption)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
-                                    .background(Color(.secondarySystemBackground))
+                                    .background(Color(.action))
                                     .clipShape(Capsule())
                             }
                             .buttonStyle(.plain)
@@ -54,7 +54,7 @@ struct PhotoDetailView: View {
                         .font(.caption)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                        .background(Color(.secondarySystemBackground))
+                        .background(Color(.action))
                         .clipShape(Capsule())
                     }
                     .padding(.horizontal)
